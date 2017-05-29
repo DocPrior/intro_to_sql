@@ -1,0 +1,8 @@
+1. Find all the robots from The Hitchhiker's Guide to the Galaxy.
+intro_to_sql=# SELECT name FROM robots WHERE source = 'The Hitchhiker''s Guide to the Galaxy'
+intro_to_sql-# ;
+     name
+--------------
+ Marvin
+ Deep Thought
+(2 rows)
