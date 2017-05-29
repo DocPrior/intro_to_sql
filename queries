@@ -1,4 +1,5 @@
 1. Find all the robots from The Hitchhiker's Guide to the Galaxy.
+
 intro_to_sql=# SELECT name FROM robots WHERE source = 'The Hitchhiker''s Guide to the Galaxy'
 intro_to_sql-# ;
      name
@@ -6,3 +7,97 @@ intro_to_sql-# ;
  Marvin
  Deep Thought
 (2 rows)
+
+
+2. Find the robot with an "anxious" personality.
+
+intro_to_sql=# SELECT name FROM robots WHERE personality = 'anxious';
+ name
+------
+ C3PO
+(1 row)
+
+3. Find all recipes that are nut free.
+
+intro_to_sql=# SELECT name FROM recipes WHERE nut_free = true;
+                   name
+-------------------------------------------
+ Butternut Squash Bake
+ Vegetarian Bibimbap
+ French Veggie Loaf
+ Quinoa and Black Beans
+ Juicy Roasted Chicken
+ Garlic Green Beans
+ Stout Slow Cooker Corned Beef and Veggies
+(7 rows)
+
+4. Count the number of recipes that are gluten free but not vegetarian.
+intro_to_sql=# SELECT COUNT(name) FROM recipes WHERE gluten_free = true AND vegetarian = false;
+ count
+-------
+     2
+(1 row)
+
+5. Find the animal with the most legs.
+intro_to_sql=# SELECT name FROM animals ORDER BY number_of_legs DESC LIMIT 1;
+  name
+---------
+ octopus
+(1 row)
+
+6. Find the board game that takes the least amount of time to play.
+
+intro_to_sql=# SELECT name FROM board_games ORDER BY mins_to_play ASC LIMIT 1;
+   name
+----------
+ Sushi Go
+(1 row)
+
+7. Find the recipe that takes the most time to prepare.
+
+HINT:  Perhaps you meant to reference the column "recipes.minutes_required".
+intro_to_sql=# SELECT name FROM recipes ORDER BY minutes_required DESC LIMIT 1;
+                   name
+-------------------------------------------
+ Stout Slow Cooker Corned Beef and Veggies
+(1 row)
+
+8. Find all the robots whose name starts with the letter M.
+intro_to_sql=# SELECT name FROM robots WHERE name LIKE 'M%'
+;
+      name
+----------------
+ Marvin
+ Mr. Butlertron
+(2 rows)
+
+
+9. Count the number of board games that can be played by 8 people.
+intro_to_sql=# SELECT COUNT(name) FROM board_games WHERE max_players = 8;
+ count
+-------
+     1
+(1 row)
+
+10.Find all animals that are swimming and egg-laying.
+intro_to_sql=# SELECT name FROM animals WHERE swimming = true AND egg_laying = true;
+  name
+---------
+ octopus
+ duck
+(2 rows)
+
+11. Find all animals that are swimming and egg-laying but not flying.
+intro_to_sql=# SELECT name FROM animals WHERE swimming = true AND egg_laying = true AND flying = false;
+  name
+---------
+ octopus
+(1 row)
+
+12. Find the board game that supports the largest number of people.
+
+intro_to_sql=# SELECT name FROM board_games ORDER BY max_players DESC LIMIT 1;
+          name
+------------------------
+ Cards Against Humanity
+(1 row)
